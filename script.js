@@ -180,6 +180,9 @@ var container = document.querySelector(".container");
 var main = document.querySelector("footer");
 let clustter = "";
 
+var likes = document.querySelector("#likes");
+
+//  post
 features.forEach((element) => {
   clustter += `  <div class="container">
         <div class="top">
@@ -210,16 +213,12 @@ features.forEach((element) => {
             src= ${element.userPost}
             alt=""
           />
+            <i class="ri-heart-3-line"></i>
         </div>
         <div class="bottom">
           <div class="bottom_top">
             <div class="bottom_top_left">
-              <img
-                width="24"
-                height="24"
-                src="https://img.icons8.com/material-outlined/24/filled-like.png"
-                alt="filled-like"
-              />
+            <i class="ri-heart-line"></i>
               <div id="likes">${element.likeCount}</div>
               <img
                 width="24"
@@ -259,3 +258,47 @@ features.forEach((element) => {
 });
 
 main.innerHTML = clustter;
+
+main.addEventListener("dblclick", (e) => {
+  // Ensure the double-click happens on an image within the `.middle` class
+  const middle = e.target.closest(".middle");
+  if (middle) {
+    const isLiked = middle.getAttribute("data-liked") === "true"; // Check if already liked
+    const likeIcon = middle.querySelector("i.ri-heart-3-line");
+    const likeCountElement = middle.parentElement.querySelector("#likes");
+    const loveIcon = middle.parentElement.querySelector(
+      ".bottom .ri-heart-line"
+    );
+    console.log(loveIcon);
+
+    if (!isLiked) {
+      // Increment and update the like count
+      if (likeCountElement) {
+        let currentLikes = parseInt(likeCountElement.textContent, 10) || 0;
+        likeCountElement.textContent = currentLikes + 1;
+      }
+
+      // Animate and change the heart icon
+      if (likeIcon) {
+        likeIcon.classList.remove("ri-heart-3-line"); // Remove the outline icon class
+        likeIcon.classList.add("ri-heart-3-fill"); // Add the filled icon class
+        likeIcon.style.opacity = "1";
+        likeIcon.style.transform = "translate(-50%, -50%) scale(2)";
+        loveIcon.classList.remove("ri-heart-line"); // Remove the outline icon class
+        loveIcon.classList.add("ri-heart-fill");
+        loveIcon.style.color = "red";
+
+        setTimeout(() => {
+          likeIcon.style.transform = "translate(-50%, -50%) scale(0)";
+        }, 1000);
+        setTimeout(() => {
+          likeIcon.style.opacity = "0";
+        }, 1000);
+      }
+      
+
+      // Mark this post as liked
+      middle.setAttribute("data-liked", "true");
+    }
+  }
+});

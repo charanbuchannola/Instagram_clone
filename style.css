@@ -57,7 +57,7 @@ body {
   text-align: center;
 }
 #root #parent main header .stories .pfp {
-  background: linear-gradient(45deg, #3c74fe, #ff5e68, #bd19ff, #3c74fe);
+  background-color: rgb(243, 73, 73);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,7 +142,7 @@ body {
   border-radius: 40px;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  background-color: rgba(255, 64, 128, 0.8235294118);
+  background-color: rgba(215, 14, 14, 0.8235294118);
   transition: width 5s linear; /* Smooth transition for the loading bar */
 }
 #root #parent main footer {

@@ -207,7 +207,7 @@ features.forEach((element) => {
         </div>
         <div class="middle">
           <img
-            src= ${element.userprofile}
+            src= ${element.userPost}
             alt=""
           />
         </div>

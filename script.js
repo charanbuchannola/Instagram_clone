@@ -183,7 +183,7 @@ let clustter = "";
 var likes = document.querySelector("#likes");
 
 //  post
-features.forEach((element) => {
+features.forEach((element, idx) => {
   clustter += `  <div class="container">
         <div class="top">
           <div class="top_left">
@@ -218,6 +218,8 @@ features.forEach((element) => {
         <div class="bottom">
           <div class="bottom_top">
             <div class="bottom_top_left">
+            
+            
             <i class="ri-heart-line"></i>
               <div id="likes">${element.likeCount}</div>
               <img
@@ -295,7 +297,6 @@ main.addEventListener("dblclick", (e) => {
           likeIcon.style.opacity = "0";
         }, 1000);
       }
-      
 
       // Mark this post as liked
       middle.setAttribute("data-liked", "true");
